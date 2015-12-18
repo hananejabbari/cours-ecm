@@ -56,4 +56,15 @@ public class IndexControllerTest {
                 .andExpect(model().attributeExists("recipe"))
                 .andExpect(view().name("recette"));
     }
+    @Test
+    public void recetteUnknown() throws Exception {
+        String id = "56375619d4c603aa4eb412af";
+
+        Mockito.when(recipeService.findById(id)).thenReturn(null);
+
+        mockMvc.perform(get("/recette/" + id))
+                .andExpect(status().is(404));
+
+    }
+
 }

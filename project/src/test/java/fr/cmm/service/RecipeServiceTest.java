@@ -103,4 +103,11 @@ public class RecipeServiceTest {
 
         Assert.assertEquals(asList("tag1", "tag2", "tag3"), recipeService.findAllTags());
     }
+    @Test
+    public void findByWithInvalid(){
+        RecipeService recipe= new RecipeService();
+        Assert.assertEquals(null, recipe.findById("idInexistant"));
+
+
+    }
 }

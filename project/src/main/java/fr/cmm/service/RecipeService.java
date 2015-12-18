@@ -1,5 +1,6 @@
 package fr.cmm.service;
 
+import java.util.IllegalFormatCodePointException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -44,6 +45,11 @@ public class RecipeService {
     }
 
     public Recipe findById(String id) {
+        try {
+            new ObjectId(id);
+
+        }catch (IllegalArgumentException e){return null;}
+
         return recipeCollection.findOne(new ObjectId(id)).as(Recipe.class);
     }
 

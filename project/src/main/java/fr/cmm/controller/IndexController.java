@@ -37,6 +37,8 @@ public class IndexController {
     @RequestMapping("/recettes")
     public String recettes(SearchForm searchForm, ModelMap model) {
         PageQuery pageQuery = new PageQuery();
+        /*3. MVC-3 : pageIndex invalide */
+        if(searchForm.getPageIndex()<=0) { pageQuery.setIndex(0) ;}
         pageQuery.setIndex(searchForm.getPageIndex() - 1);
         pageQuery.setTag(searchForm.getTag());
 
@@ -77,7 +79,8 @@ public class IndexController {
 
     @RequestMapping("/contact")
     public String contact() {
-        return "contac";
+       /*1. MVC-1 : Page contact cassée */
+        return "contact";
     }
 
     @RequestMapping("/mentions-legales")

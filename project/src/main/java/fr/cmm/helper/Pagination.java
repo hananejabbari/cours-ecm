@@ -4,6 +4,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
+
 public class Pagination {
     // 1 based page index
     private int pageIndex;
@@ -29,7 +30,15 @@ public class Pagination {
     }
 
     public int getPageCount() {
-        return (int) count / pageSize;
+        if (pageSize==0)
+            return 0;
+        else
+            if (count % pageSize == 0) {
+                return (int) count / pageSize;
+            }
+            else {
+            return (int) (1 + count/pageSize);
+        }
     }
 
     public List<Integer> getPages() {

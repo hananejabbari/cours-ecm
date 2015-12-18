@@ -38,8 +38,10 @@ public class IndexController {
     public String recettes(SearchForm searchForm, ModelMap model) {
         PageQuery pageQuery = new PageQuery();
         /*3. MVC-3 : pageIndex invalide */
-        if(searchForm.getPageIndex()<=0) { pageQuery.setIndex(0) ;}
-        pageQuery.setIndex(searchForm.getPageIndex() - 1);
+        if (searchForm.getPageIndex() <= 0) {
+            pageQuery.setIndex(0);
+        }
+        else pageQuery.setIndex(searchForm.getPageIndex() - 1);
         pageQuery.setTag(searchForm.getTag());
 
         Pagination pagination = new Pagination();
